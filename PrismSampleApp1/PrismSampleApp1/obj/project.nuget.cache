@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "nv5Uth6tfKPRBsIXumU7zCbKNzWX3d4Qun9ngRuYT2EySKF3uBQuRUeTlLATNNNIUVVIGQBNxRDrQ/eT+C3cQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\prism.core\\8.0.0.1909\\prism.core.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\prism.unity\\8.0.0.1909\\prism.unity.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\prism.wpf\\8.0.0.1909\\prism.wpf.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\unity.abstractions\\5.11.6\\unity.abstractions.5.11.6.nupkg.sha512",
+    "C:\\Users\\M.Ozama\\.nuget\\packages\\unity.container\\5.11.8\\unity.container.5.11.8.nupkg.sha512"
+  ],
+  "logs": []
+}
