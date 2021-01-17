@@ -29,6 +29,27 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _gameRecord, value); }
         }
 
+        private string _playerName = "";
+        public string PlayerName
+        {
+            get { return _playerName; }
+            set { SetProperty(ref _playerName, value); }
+        }
+
+        private bool _gender = false;
+        public bool Gender
+        {
+            get { return _gender; }
+            set { SetProperty(ref _gender, value); }
+        }
+
+        private int _playerGrade = 0;
+        public int PlayerGrade
+        {
+            get { return _playerGrade; }
+            set { SetProperty(ref _playerGrade, value); }
+        }
+
         private readonly IRegionManager _regionManager;
 
         private ObservableCollection<Player> _playersInfo
@@ -74,7 +95,12 @@ namespace PrismSampleApp1.ViewModels
 
         private void RegisterMember()
         {
-
+            PlayersInfo.Add(new Player { 
+                PlayerName = this.PlayerName,
+                IsGirl = this.Gender,
+                Grade = this.PlayerGrade,
+                Position = ""
+            });
         }
     }
 }
