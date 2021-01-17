@@ -39,6 +39,16 @@ namespace PrismSampleApp1.ViewModels
             get { return _playersInfo; }
             set { SetProperty(ref _playersInfo, value); }
         }
+
+        private ObservableCollection<PlayerData> _playersGameData
+            = new ObservableCollection<PlayerData>();
+
+        public ObservableCollection<PlayerData> PlayersGameData
+        {
+            get { return _playersGameData; }
+            set { SetProperty(ref _playersGameData, value); }
+        }
+
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
         public DelegateCommand RegisterCommand { get; private set; }

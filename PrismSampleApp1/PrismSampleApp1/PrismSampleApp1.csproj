@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commons\Player.cs" />
+    <Compile Include="Commons\PlayerData.cs" />
     <Compile Include="Services\PlayersInfoManager.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\GameRecordViewModel.cs" />

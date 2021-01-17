@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj": {}
+    "C:\\Users\\M.Ozama\\forJob\\dev\\FootballGameManagerSampleApp1\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj": {
+    "C:\\Users\\M.Ozama\\forJob\\dev\\FootballGameManagerSampleApp1\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\M.Ozama\\forJob\\dev\\FootballGameManagerSampleApp1\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj",
         "projectName": "PrismSampleApp1",
-        "projectPath": "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj",
+        "projectPath": "C:\\Users\\M.Ozama\\forJob\\dev\\FootballGameManagerSampleApp1\\PrismSampleApp1\\PrismSampleApp1\\PrismSampleApp1.csproj",
         "packagesPath": "C:\\Users\\M.Ozama\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\M.Ozama\\source\\repos\\PrismSampleApp1\\PrismSampleApp1\\obj\\",
+        "outputPath": "C:\\Users\\M.Ozama\\forJob\\dev\\FootballGameManagerSampleApp1\\PrismSampleApp1\\PrismSampleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
