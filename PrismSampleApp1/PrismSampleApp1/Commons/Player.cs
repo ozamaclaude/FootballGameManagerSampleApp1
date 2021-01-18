@@ -9,7 +9,7 @@ namespace PrismSampleApp1.Commons
     public class Player
     {
         public string PlayerName { get; set; }
-        public bool IsGirl { get; set; }
+        public string Gender { get; set; }
         public int Grade { get; set; }
         public string Position { get; set; }
     }

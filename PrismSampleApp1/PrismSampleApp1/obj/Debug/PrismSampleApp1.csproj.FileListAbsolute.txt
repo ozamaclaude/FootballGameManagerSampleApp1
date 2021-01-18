@@ -66,3 +66,11 @@ C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismS
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\PrismSampleApp1.csproj.CopyComplete
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\PrismSampleApp1.exe
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\PrismSampleApp1.pdb
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\PrismSampleApp1.exe.config
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\PrismSampleApp1_MarkupCompile.lref
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\ControlzEx.dll
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\ControlzEx.pdb
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\MahApps.Metro.dll
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\MahApps.Metro.pdb
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\de\MahApps.Metro.resources.dll
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\App.baml

@@ -1,9 +1,10 @@
-﻿<Window x:Class="PrismSampleApp1.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="600" Width="900">
+﻿<Controls:MetroWindow x:Class="PrismSampleApp1.Views.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:prism="http://prismlibrary.com/"
+                      prism:ViewModelLocator.AutoWireViewModel="True"
+                      Title="{Binding Title}" Height="600" Width="900">
     <Window.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="teamLogo" UriSource="../Images/customLogo.jpg" />
@@ -52,4 +53,4 @@
             <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="5" />
         </Grid>
     </Grid>
-</Window>
+</Controls:MetroWindow>

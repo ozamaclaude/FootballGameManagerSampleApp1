@@ -2,7 +2,9 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using PrismSampleApp1.Commons;
+using PrismSampleApp1.Services;
 using System.Collections.ObjectModel;
+using Unity;
 
 namespace PrismSampleApp1.ViewModels
 {
@@ -50,7 +52,10 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _playerGrade, value); }
         }
 
+        private IUnityContainer _container;
         private readonly IRegionManager _regionManager;
+
+        private IPlayersInfoManager _playersInfoManager;
 
         private ObservableCollection<Player> _playersInfo
             = new ObservableCollection<Player>();
@@ -74,9 +79,11 @@ namespace PrismSampleApp1.ViewModels
 
         public DelegateCommand RegisterCommand { get; private set; }
 
-        public MainWindowViewModel(IRegionManager regionManager)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
             _regionManager = regionManager;
+            _container = container;
+            _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
             Setup();
         }
         private void Setup()
@@ -95,12 +102,18 @@ namespace PrismSampleApp1.ViewModels
 
         private void RegisterMember()
         {
-            PlayersInfo.Add(new Player { 
+            var gender = "女子";
+            if (this.Gender) { gender = "男子"; };
+            var player = new Player
+            {
                 PlayerName = this.PlayerName,
-                IsGirl = this.Gender,
+                Gender = gender,
                 Grade = this.PlayerGrade,
                 Position = ""
-            });
+            };
+            PlayersInfo.Add(player);
+
+            _playersInfoManager.AddPlayer(player);
         }
     }
 }

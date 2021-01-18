@@ -23,7 +23,7 @@
                       AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="名前" Binding="{Binding PlayerName}"/>
-                    <DataGridTextColumn Header="男／女" Binding="{Binding IsGirl}"/>
+                    <DataGridTextColumn Header="男／女" Binding="{Binding Gender}"/>
                     <DataGridTextColumn Header="学年" Binding="{Binding Grade}"/>
                     <DataGridTextColumn Header="ポジション" Binding="{Binding Position}"/>
                 </DataGrid.Columns>
