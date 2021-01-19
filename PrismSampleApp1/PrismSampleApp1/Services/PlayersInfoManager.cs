@@ -20,6 +20,11 @@ namespace PrismSampleApp1.Services
 
         public void AddPlayer(Player p) { Players.Add(p); }
 
+        public PlayersInfoManager()
+        {
+            Players = new List<Player>();
+        }
+
         public void Save()
         {
             var path = Properties.Settings.Default.PlayerFilePath;

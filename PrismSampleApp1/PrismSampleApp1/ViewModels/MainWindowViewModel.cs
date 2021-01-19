@@ -52,6 +52,16 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _playerGrade, value); }
         }
 
+        private string _playerPosition = "";
+        public string PlayerPosition
+        {
+            get { return _playerPosition; }
+            set 
+            {
+                SetProperty(ref _playerPosition, value.Replace("System.Windows.Controls.ComboBoxItem: ", "")); 
+            }
+        }
+
         private IUnityContainer _container;
         private readonly IRegionManager _regionManager;
 
@@ -78,6 +88,7 @@ namespace PrismSampleApp1.ViewModels
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
         public DelegateCommand RegisterCommand { get; private set; }
+        public DelegateCommand SaveCommand { get; private set; }
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
@@ -91,6 +102,7 @@ namespace PrismSampleApp1.ViewModels
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Views.Default));
             NavigateCommand = new DelegateCommand<string>(Navigate);
             RegisterCommand = new DelegateCommand(RegisterMember);
+            SaveCommand = new DelegateCommand(Save);
         }
 
         private void Navigate(string path)
@@ -109,11 +121,16 @@ namespace PrismSampleApp1.ViewModels
                 PlayerName = this.PlayerName,
                 Gender = gender,
                 Grade = this.PlayerGrade,
-                Position = ""
+                Position = this.PlayerPosition
             };
             PlayersInfo.Add(player);
 
             _playersInfoManager.AddPlayer(player);
+        }
+
+        private void Save()
+        {
+            _playersInfoManager.Save();
         }
     }
 }

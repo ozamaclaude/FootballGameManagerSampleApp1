@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
-             Height="500" Width="700">
+             Height="600" Width="700">
     <Grid Background="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -11,7 +11,7 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -41,15 +41,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="5"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="5"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="5"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="名前"
+                       FontSize="15"
                        VerticalAlignment="Center"
                        Foreground="White"/>
             <TextBox Grid.Column="3" Grid.Row="1" Height="30"
@@ -57,6 +60,7 @@
                      Text="{Binding PlayerName, Mode=TwoWay}"/>
             <!--Text="{Binding }"/>-->
             <TextBlock Grid.Column="1" Grid.Row="3" Text="性別"
+                       FontSize="15"
                        VerticalAlignment="Center"
                        Foreground="White"/>
             <!--<TextBox Grid.Column="3" Grid.Row="3" Height="30"
@@ -64,17 +68,48 @@
             <CheckBox Grid.Column="3" Grid.Row="3" Height="30" 
                       IsChecked="{Binding Gender}"/>
 
-            <TextBlock Grid.Column="1" Grid.Row="5" Text="年齢"
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="学年"
+                       FontSize="15"
                        VerticalAlignment="Center"
                        Foreground="White"/>
             <TextBox Grid.Column="3" Grid.Row="5" Height="30"
                      Background="Blue" Foreground="White" 
                      Text="{Binding PlayerGrade, Mode=TwoWay}"/>
-            
-            <Button Grid.Column="3" Grid.Row="7"
-                    Command="{Binding RegisterCommand}"
-                    HorizontalAlignment="Right" Content="登録"
-                    Width="60" Height="30"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="7" Text="ポジション"
+                       FontSize="15"
+                       VerticalAlignment="Center"
+                       Foreground="White"/>
+            <!--<TextBox Grid.Column="3" Grid.Row="7" Height="30"
+                     Background="Blue" Foreground="White" 
+                     Text="{Binding PlayerPosition, Mode=TwoWay}"/>-->
+
+            <ComboBox Grid.Column="3" Grid.Row="7" Height="30"
+                      SelectedItem="{Binding PlayerPosition, Mode=TwoWay}">
+                <ComboBoxItem>GK</ComboBoxItem>
+                <ComboBoxItem>CBK</ComboBoxItem>
+                <ComboBoxItem>RBK</ComboBoxItem>
+                <ComboBoxItem>LBK</ComboBoxItem>
+                <ComboBoxItem>CMF</ComboBoxItem>
+                <ComboBoxItem>RMF</ComboBoxItem>
+                <ComboBoxItem>LMF</ComboBoxItem>
+                <ComboBoxItem>FW</ComboBoxItem>
+                <ComboBoxItem>RSV</ComboBoxItem>
+            </ComboBox>
+
+            <StackPanel Grid.Column="3" Grid.Row="9" Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Background="Navy" Foreground="White"
+                        FontSize="12"
+                        Command="{Binding RegisterCommand}"
+                        HorizontalAlignment="Right" Content="登録"
+                        Width="60" Height="30" Margin="0 0 10 0"/>
+                <Button Background="Red" Foreground="White"
+                        FontSize="12"
+                        Command="{Binding SaveCommand}"
+                        HorizontalAlignment="Right" Content="保存"
+                        Width="60" Height="30"/>
+            </StackPanel>
         </Grid>
 
     </Grid>
