@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
-             Height="500" Width="700">
+             Height="600" Width="700">
     <Grid Background="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -37,7 +37,58 @@
         
         <!--プルダウンのデータバインディング-->
         <!--https://iyemon018.hatenablog.com/entry/2015/10/17/203939-->
-        
-        
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <TextBlock Text="日時"/>
+                <TextBox Height="20"  Width="200" VerticalAlignment="Top" />
+                <TextBlock Text="対戦相手"/>
+                <TextBox Height="20"  Width="200" VerticalAlignment="Top" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                <Button Height="20" Content="開始"/>
+                <Button Height="20" Content="終了"/>
+            </StackPanel>
+                
+            <DataGrid Grid.Column="1" Grid.Row="5" ItemsSource="{Binding PlayersGameData, Mode=TwoWay}"
+                      AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名前" Binding="{Binding PlayerName}"/>
+                    <DataGridTextColumn Header="男／女" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="学年" Binding="{Binding Grade}"/>
+                    <DataGridTextColumn Header="ポジション" Binding="{Binding Position}"/>
+                    <DataGridTextColumn Header="得点" Binding="{Binding Score}"/>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
+                <TextBlock Text="所感"/>
+                <TextBox Height="40" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Horizontal">
+                <Button Height="20" Content="登録"/>
+                <Button Height="20" Content="保存"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </UserControl>

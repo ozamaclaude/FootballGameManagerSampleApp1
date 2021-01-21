@@ -8,7 +8,7 @@ namespace PrismSampleApp1.Commons
 {
     public class PlayerData : Player
     {
-        public int score { get; set; }
+        public int Score { get; set; }
         public bool IsStartingMember { get; set; }
 
     }
