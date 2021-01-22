@@ -26,6 +26,7 @@
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" Text="学年指定" 
+                       Height="35" FontSize="18"
                        Foreground="White"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
             
@@ -59,14 +60,19 @@
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                <TextBlock Text="日時"/>
-                <TextBox Height="20"  Width="200" VerticalAlignment="Top" />
-                <TextBlock Text="対戦相手"/>
+                <TextBlock Text="日時" FontSize="18" Foreground="White" Margin="0 0 10 0"/>
+                <TextBox Height="20"  Width="200" VerticalAlignment="Top" Margin="0 0 10 0"/>
+                <TextBlock Text="対戦相手" FontSize="18"  Foreground="White" Margin="0 0 10 0"/>
                 <TextBox Height="20"  Width="200" VerticalAlignment="Top" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
-                <Button Height="20" Content="開始"/>
-                <Button Height="20" Content="終了"/>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBlock Height="35" Width="200"  Text="{Binding CurrentTime}"
+                           FontSize="20" Background="OliveDrab"
+                           Foreground="White" Margin="0 0 10 0"/>
+                <Button Height="35" Width="80" Foreground="White" 
+                        FontSize="16" Background="Green"
+                        Content="{Binding GameStatus}"/>
             </StackPanel>
                 
             <DataGrid Grid.Column="1" Grid.Row="5" ItemsSource="{Binding PlayersGameData, Mode=TwoWay}"
@@ -81,12 +87,18 @@
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
-                <TextBlock Text="所感"/>
+                <TextBlock Text="所感" FontSize="16" Foreground="White"
+                           Height="20"/>
                 <TextBox Height="40" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Horizontal">
-                <Button Height="20" Content="登録"/>
-                <Button Height="20" Content="保存"/>
+            <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Height="35" Width="60" Content="登録" Background="Blue" 
+                        Foreground="White" 
+                        FontSize="16" Margin="0 0 10 0"/>
+                <Button Height="35" Width="60" Content="保存" Background="Red"
+                        Foreground="White" 
+                        FontSize="16"/>
             </StackPanel>
         </Grid>
 

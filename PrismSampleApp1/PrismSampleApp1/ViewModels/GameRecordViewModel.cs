@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Threading;
 
 namespace PrismSampleApp1.ViewModels
 {
@@ -18,9 +19,33 @@ namespace PrismSampleApp1.ViewModels
             get { return _playersGameData; }
             set { SetProperty(ref _playersGameData, value); }
         }
+        private string _gameStatus = "試合開始";
+        public string GameStatus
+        {
+            get { return _gameStatus; }
+            set { SetProperty(ref _gameStatus, value); }
+        }
+        private string _currentTime = "";
+        public string CurrentTime
+        {
+            get { return _currentTime; }
+            set { SetProperty(ref _currentTime, value); }
+        }
 
         public GameRecordViewModel()
         {
+            //DispatcherTimer timer = new DispatcherTimer();
+            //timer.Tick += GetCurrentTime();
+            //timer.Interval = new TimeSpan(0, 0, 1);
+            //timer.Start();
+
+        }
+
+        private void GetCurrentTime(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            //return dt.ToString("yyyy/MM/dd HH:mm:ss");
+            CurrentTime = dt.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }
