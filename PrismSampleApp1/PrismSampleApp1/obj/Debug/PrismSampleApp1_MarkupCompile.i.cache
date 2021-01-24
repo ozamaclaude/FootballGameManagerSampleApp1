@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\App.xaml
-4-1750816127
+5-1876568222
 
-16-580950982
+181792892303
 28702732114
-Views\Default.xaml;Views\GameRecord.xaml;Views\MainWindow.xaml;Views\SettingView.xaml;
+Views\Default.xaml;Views\GameRecord.xaml;Views\MainWindow.xaml;Views\ServiceDialog.xaml;Views\SettingView.xaml;
 
-True
+False
 

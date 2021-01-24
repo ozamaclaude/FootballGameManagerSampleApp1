@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using PrismSampleApp1.Commons;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,28 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _currentTime, value); }
         }
 
-        public GameRecordViewModel()
+        public DelegateCommand RegisterCommand { get; private set; }
+
+        private readonly IDialogService dlgService = null;
+
+        public GameRecordViewModel(IDialogService dialogService)
         {
+
+            dlgService = dialogService;
+            RegisterCommand = new DelegateCommand(RegisterRecord);
             //DispatcherTimer timer = new DispatcherTimer();
             //timer.Tick += GetCurrentTime();
             //timer.Interval = new TimeSpan(0, 0, 1);
             //timer.Start();
 
+        }
+
+        private void RegisterRecord()
+        {
+            IDialogResult result = null;
+            this.dlgService.ShowDialog("ServiceDialog",
+                    new DialogParameters { { "Message1", "aaaa" }, { "Message2", "bbbb" } },
+                    ret => result = ret);
         }
 
         private void GetCurrentTime(object sender, EventArgs e)

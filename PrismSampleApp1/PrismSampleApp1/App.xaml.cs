@@ -1,4 +1,5 @@
 ﻿using PrismSampleApp1.Views;
+using PrismSampleApp1.ViewModels;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -18,6 +19,7 @@ namespace PrismSampleApp1
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialog<ServiceDialog, ViewModels.ServiceDialogViewModel>();
             containerRegistry.RegisterForNavigation<Views.SettingView>();
             containerRegistry.RegisterForNavigation<Views.Default>();
             containerRegistry.RegisterForNavigation<Views.GameRecord>();

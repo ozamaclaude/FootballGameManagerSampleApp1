@@ -74,3 +74,5 @@ C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismS
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\MahApps.Metro.pdb
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\bin\Debug\de\MahApps.Metro.resources.dll
 C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\App.baml
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\Views\ServiceDialog.baml
+C:\Users\M.Ozama\forJob\dev\FootballGameManagerSampleApp1\PrismSampleApp1\PrismSampleApp1\obj\Debug\Views\ServiceDialog.g.cs

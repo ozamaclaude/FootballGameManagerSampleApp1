@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="PrismSampleApp1.Views.ServiceDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Height="150" Width="300">
+    <Grid>
+            
+    </Grid>
+</UserControl>

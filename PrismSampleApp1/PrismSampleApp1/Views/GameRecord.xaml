@@ -94,7 +94,8 @@
             <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Horizontal"
                         HorizontalAlignment="Right">
                 <Button Height="35" Width="60" Content="登録" Background="Blue" 
-                        Foreground="White" 
+                        Foreground="White"
+                        Command="{Binding RegisterCommand}"
                         FontSize="16" Margin="0 0 10 0"/>
                 <Button Height="35" Width="60" Content="保存" Background="Red"
                         Foreground="White" 

@@ -61,12 +61,16 @@
     <Compile Include="Services\PlayersInfoManager.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\GameRecordViewModel.cs" />
+    <Compile Include="ViewModels\ServiceDialogViewModel.cs" />
     <Compile Include="ViewModels\SettingViewViewModel.cs" />
     <Compile Include="Views\Default.xaml.cs">
       <DependentUpon>Default.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameRecord.xaml.cs">
       <DependentUpon>GameRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceDialog.xaml.cs">
+      <DependentUpon>ServiceDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
@@ -92,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ServiceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
