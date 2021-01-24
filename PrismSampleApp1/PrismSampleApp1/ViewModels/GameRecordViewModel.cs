@@ -34,6 +34,7 @@ namespace PrismSampleApp1.ViewModels
         }
 
         public DelegateCommand RegisterCommand { get; private set; }
+        public DelegateCommand SaveCommand { get; private set; }
 
         private readonly IDialogService dlgService = null;
 
@@ -42,6 +43,7 @@ namespace PrismSampleApp1.ViewModels
 
             dlgService = dialogService;
             RegisterCommand = new DelegateCommand(RegisterRecord);
+            SaveCommand = new DelegateCommand(SaveRecord);
             //DispatcherTimer timer = new DispatcherTimer();
             //timer.Tick += GetCurrentTime();
             //timer.Interval = new TimeSpan(0, 0, 1);
@@ -50,6 +52,16 @@ namespace PrismSampleApp1.ViewModels
         }
 
         private void RegisterRecord()
+        {
+
+        }
+
+        private void SaveRecord()
+        {
+
+        }
+
+        private void ShowDialog()
         {
             IDialogResult result = null;
             this.dlgService.ShowDialog("ServiceDialog",
