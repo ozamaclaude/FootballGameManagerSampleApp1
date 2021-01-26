@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using PrismSampleApp1.Commons;
 using PrismSampleApp1.Services;
 using System.Collections.ObjectModel;
@@ -90,9 +91,13 @@ namespace PrismSampleApp1.ViewModels
         public DelegateCommand RegisterCommand { get; private set; }
         public DelegateCommand SaveCommand { get; private set; }
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
+        private readonly IDialogService dlgService = null;
+
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container,
+            IDialogService dialogService)
         {
             _regionManager = regionManager;
+            dlgService = dialogService;
             _container = container;
             _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
             Setup();
@@ -114,6 +119,12 @@ namespace PrismSampleApp1.ViewModels
 
         private void RegisterMember()
         {
+            if (!IsValidate()) 
+            { 
+                ShowDialog();
+                return;
+            }
+
             var gender = "女子";
             if (this.Gender) { gender = "男子"; };
             var player = new Player
@@ -128,9 +139,22 @@ namespace PrismSampleApp1.ViewModels
             _playersInfoManager.AddPlayer(player);
         }
 
+        private bool IsValidate()
+        {
+            if(this.PlayerName == "" || this.PlayerPosition == "") { return false; }
+            return true;
+        }
+
         private void Save()
         {
             _playersInfoManager.Save();
+        }
+        private void ShowDialog()
+        {
+            IDialogResult result = null;
+            this.dlgService.ShowDialog("ServiceDialog",
+                    new DialogParameters { { "Message1", "aaaa" }, { "Message2", "bbbb" } },
+                    ret => result = ret);
         }
     }
 }

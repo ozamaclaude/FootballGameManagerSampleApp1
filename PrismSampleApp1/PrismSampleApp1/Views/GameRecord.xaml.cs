@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace PrismSampleApp1.Views
 {
@@ -10,6 +12,17 @@ namespace PrismSampleApp1.Views
         public GameRecord()
         {
             InitializeComponent();
+            
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += GetCurrentTime;
+            timer.Start();
+        }
+
+        private void GetCurrentTime(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            //return dt.ToString("yyyy/MM/dd HH:mm:ss");
+            CurrentTime.Text = dt.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }

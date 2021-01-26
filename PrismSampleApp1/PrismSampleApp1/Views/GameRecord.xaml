@@ -68,23 +68,26 @@
             
             <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <TextBlock Height="35" Width="200"  Text="{Binding CurrentTime}"
+                <TextBlock Height="35" Width="200"  Name ="CurrentTime"
                            FontSize="20" Background="OliveDrab"
                            Foreground="White" Margin="0 0 10 0"/>
                 <Button Height="35" Width="80" Foreground="White" 
                         FontSize="16" Background="Green"
                         Content="{Binding GameStatus}"
+                        Command="{Binding MeasureTimeCommand}"
                         Margin="0 0 10 0"/>
                 <TextBlock Height="35" Width="80"  Text="開始時刻"
                            FontSize="15" 
                            Foreground="White" Margin="0 0 10 0"/>
-                <TextBlock Height="35" Width="80"  
+                <TextBlock Height="35" Width="80"
+                           Text="{Binding StartTime}"
                            FontSize="15" 
                            Foreground="White" Margin="0 0 10 0"/>
                 <TextBlock Height="35" Width="80"  Text="終了時刻"
                            FontSize="15"
                            Foreground="White" Margin="0 0 10 0"/>
                 <TextBlock Height="35" Width="80"  
+                           Text="{Binding EndTime}"
                            FontSize="15" 
                            Foreground="White" Margin="0 0 10 0"/>
             </StackPanel>
