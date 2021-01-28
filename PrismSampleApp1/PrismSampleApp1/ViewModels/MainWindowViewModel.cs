@@ -104,6 +104,11 @@ namespace PrismSampleApp1.ViewModels
         }
         private void Setup()
         {
+            var players = _playersInfoManager.ReadFile();
+            players.ForEach(x => {
+                AddPlayer(x.PlayerName, x.Gender, x.Grade, x.Position);
+            });
+
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Views.Default));
             NavigateCommand = new DelegateCommand<string>(Navigate);
             RegisterCommand = new DelegateCommand(RegisterMember);
@@ -127,12 +132,27 @@ namespace PrismSampleApp1.ViewModels
 
             var gender = "女子";
             if (this.Gender) { gender = "男子"; };
+            AddPlayer(this.PlayerName, gender, this.PlayerGrade, this.PlayerPosition);
+            //var player = new Player
+            //{
+            //    PlayerName = this.PlayerName,
+            //    Gender = gender,
+            //    Grade = this.PlayerGrade,
+            //    Position = this.PlayerPosition
+            //};
+            //PlayersInfo.Add(player);
+
+            //_playersInfoManager.AddPlayer(player);
+        }
+
+        private void AddPlayer(string name, string gender, int grade, string pos)
+        {
             var player = new Player
             {
-                PlayerName = this.PlayerName,
+                PlayerName = name,
                 Gender = gender,
-                Grade = this.PlayerGrade,
-                Position = this.PlayerPosition
+                Grade = grade,
+                Position = pos
             };
             PlayersInfo.Add(player);
 

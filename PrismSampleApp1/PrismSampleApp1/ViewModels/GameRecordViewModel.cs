@@ -55,6 +55,8 @@ namespace PrismSampleApp1.ViewModels
         public DelegateCommand MeasureTimeCommand { get; private set; }
         public DelegateCommand SaveCommand { get; private set; }
 
+        public DelegateCommand GetPointCommand { get; private set; }
+
         private readonly IDialogService dlgService = null;
 
         public GameRecordViewModel(IDialogService dialogService)
@@ -64,7 +66,7 @@ namespace PrismSampleApp1.ViewModels
             MeasureTimeCommand = new DelegateCommand(MeasureTime);
             RegisterCommand = new DelegateCommand(RegisterRecord);
             SaveCommand = new DelegateCommand(SaveRecord);
-
+            GetPointCommand = new DelegateCommand(AddPoint);
         }
 
         private void MeasureTime()
@@ -89,6 +91,8 @@ namespace PrismSampleApp1.ViewModels
         {
 
         }
+
+        private void AddPoint() { }
 
         private void ShowDialog()
         {

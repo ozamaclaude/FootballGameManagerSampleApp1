@@ -1,6 +1,7 @@
 ﻿using PrismSampleApp1.Commons;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace PrismSampleApp1.Services
     {
         void AddPlayer(Player p);
         void Save();
+
+        List<Player> ReadFile();
     }
 
     class PlayersInfoManager : IPlayersInfoManager
@@ -33,9 +36,39 @@ namespace PrismSampleApp1.Services
                 Players.ForEach(x => Write(fileStream, x));
             }
         }
+
+        public List<Player> ReadFile()
+        {
+            var path = Properties.Settings.Default.PlayerFilePath;
+            if (File.Exists(path) == false)
+            {
+                Debug.WriteLine("file not found");
+                return null;
+            }
+            var lines = File.ReadAllLines(path);
+
+            var players = new List<Player>();
+
+            foreach (var l in lines)
+            {
+                var splitted = l.Split(',');
+                var cnt = splitted.Length;
+                //if (splitted.Length < 3) { continue; }
+                players.Add(new Player
+                {
+                    PlayerName = splitted[0],
+                    Gender = splitted[1],
+                    Grade = int.Parse(splitted[2]),
+                    Position = splitted[3]
+                });
+            }
+
+            return players;
+        }
+
         private void Write(StreamWriter fs, Player pl)
         {
-            fs.WriteLine("{0},{1},{2}", pl.PlayerName, pl.Gender, pl.Grade);
+            fs.WriteLine("{0},{1},{2},{3}", pl.PlayerName, pl.Gender, pl.Grade, pl.Position);
         }
     }
 }

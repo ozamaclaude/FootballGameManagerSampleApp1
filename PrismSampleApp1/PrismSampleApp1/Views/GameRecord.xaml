@@ -104,7 +104,13 @@
                         <DataGridTextColumn Header="学年" Binding="{Binding Grade}"/>
                         <DataGridTextColumn Header="ポジション" Binding="{Binding Position}"/>
                         <DataGridTextColumn Header="得点" Binding="{Binding Score}"/>
-
+                        <DataGridTemplateColumn Header="Action">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Act" Command="{Binding GetPointCommand}" IsEnabled="{Binding Actionable}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
