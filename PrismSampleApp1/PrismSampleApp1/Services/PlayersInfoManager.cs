@@ -13,6 +13,7 @@ namespace PrismSampleApp1.Services
     {
         void AddPlayer(Player p);
         void Save();
+        void FlushContents();
 
         List<Player> ReadFile();
     }
@@ -58,12 +59,22 @@ namespace PrismSampleApp1.Services
                 {
                     PlayerName = splitted[0],
                     Gender = splitted[1],
-                    Grade = int.Parse(splitted[2]),
+                    Grade = splitted[2],
                     Position = splitted[3]
                 });
             }
 
             return players;
+        }
+
+        public void FlushContents()
+        {
+            var path = Properties.Settings.Default.PlayerFilePath;
+            using (var fileStream = new FileStream(path, FileMode.Open))
+            {
+                // ファイルサイズを0に設定
+                fileStream.SetLength(0);
+            }
         }
 
         private void Write(StreamWriter fs, Player pl)

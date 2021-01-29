@@ -10,7 +10,7 @@ namespace PrismSampleApp1.Commons
     {
         public string PlayerName { get; set; }
         public string Gender { get; set; }
-        public int Grade { get; set; }
+        public string Grade { get; set; }
         public string Position { get; set; }
     }
 }

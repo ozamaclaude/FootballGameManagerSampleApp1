@@ -72,9 +72,17 @@
                        FontSize="15"
                        VerticalAlignment="Center"
                        Foreground="White"/>
-            <TextBox Grid.Column="3" Grid.Row="5" Height="30"
-                     Background="Blue" Foreground="White" 
-                     Text="{Binding PlayerGrade, Mode=TwoWay}"/>
+            <ComboBox Grid.Column="3" Grid.Row="5" Height="30"
+                      SelectedItem="{Binding PlayerGrade, Mode=TwoWay}">
+                <ComboBoxItem></ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>幼児</ComboBoxItem>
+            </ComboBox>
 
             <TextBlock Grid.Column="1" Grid.Row="7" Text="ポジション"
                        FontSize="15"
@@ -86,6 +94,7 @@
 
             <ComboBox Grid.Column="3" Grid.Row="7" Height="30"
                       SelectedItem="{Binding PlayerPosition, Mode=TwoWay}">
+                <ComboBoxItem></ComboBoxItem>
                 <ComboBoxItem>GK</ComboBoxItem>
                 <ComboBoxItem>CBK</ComboBoxItem>
                 <ComboBoxItem>RBK</ComboBoxItem>

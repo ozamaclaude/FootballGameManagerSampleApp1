@@ -46,11 +46,11 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _gender, value); }
         }
 
-        private int _playerGrade = 0;
-        public int PlayerGrade
+        private string _playerGrade = "";
+        public string PlayerGrade
         {
             get { return _playerGrade; }
-            set { SetProperty(ref _playerGrade, value); }
+            set { SetProperty(ref _playerGrade, value.Replace("System.Windows.Controls.ComboBoxItem: ", "")); }
         }
 
         private string _playerPosition = "";
@@ -133,6 +133,9 @@ namespace PrismSampleApp1.ViewModels
             var gender = "女子";
             if (this.Gender) { gender = "男子"; };
             AddPlayer(this.PlayerName, gender, this.PlayerGrade, this.PlayerPosition);
+
+            InitializePlayer();
+
             //var player = new Player
             //{
             //    PlayerName = this.PlayerName,
@@ -144,8 +147,15 @@ namespace PrismSampleApp1.ViewModels
 
             //_playersInfoManager.AddPlayer(player);
         }
+        private void InitializePlayer()
+        {
+            this.PlayerName = "";
+            this.Gender = false;
+            this.PlayerGrade = "";
+            this.PlayerPosition = "";
+        }
 
-        private void AddPlayer(string name, string gender, int grade, string pos)
+        private void AddPlayer(string name, string gender, string grade, string pos)
         {
             var player = new Player
             {
@@ -167,6 +177,7 @@ namespace PrismSampleApp1.ViewModels
 
         private void Save()
         {
+            _playersInfoManager.FlushContents();
             _playersInfoManager.Save();
         }
         private void ShowDialog()

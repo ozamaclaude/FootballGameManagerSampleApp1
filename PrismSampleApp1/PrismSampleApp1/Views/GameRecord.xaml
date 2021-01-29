@@ -31,9 +31,20 @@
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
             
             <ComboBox Grid.Column="3" Margin="50 5 30 5">
+                <ComboBoxItem></ComboBoxItem>
+                <ComboBoxItem>代表</ComboBoxItem>
+                <ComboBoxItem>ジュニア</ComboBoxItem>
+                <ComboBoxItem>2年以下</ComboBoxItem>
+                <ComboBoxItem>3年以下</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>幼児</ComboBoxItem>
             </ComboBox>
-        </Grid>
+        </Grid> 
         <Separator Grid.Column="1" Grid.Row="2" Margin="10 0 10 0"/>
         
         <!--プルダウンのデータバインディング-->
