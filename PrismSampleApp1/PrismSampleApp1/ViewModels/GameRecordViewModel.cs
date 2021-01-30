@@ -30,6 +30,13 @@ namespace PrismSampleApp1.ViewModels
         private const string _timeFormat = "HH:mm:ss";
         private const string _blank = "-";
 
+        private string _gameDate = DateTime.Now.ToString("yyyy年MM月dd日");
+        public string GameDate
+        {
+            get { return _gameDate; }
+            set { SetProperty(ref _gameDate, value); }
+        }
+
         private string _selectedGrade = "";
         public string SelectedGrade
         {
