@@ -8,6 +8,13 @@ namespace PrismSampleApp1.Commons
 {
     public class PlayerData : Player
     {
+        public PlayerData(Player p) 
+        {
+            PlayerName = p.PlayerName;
+            Gender = p.Gender;
+            Grade = p.Grade;
+            Position = p.Position;
+        }
         public int Score { get; set; }
         public bool IsStartingMember { get; set; }
 

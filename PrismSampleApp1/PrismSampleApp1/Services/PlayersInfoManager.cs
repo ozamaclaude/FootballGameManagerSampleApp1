@@ -16,6 +16,8 @@ namespace PrismSampleApp1.Services
         void FlushContents();
 
         List<Player> ReadFile();
+
+        List<Player> Players { get; }
     }
 
     class PlayersInfoManager : IPlayersInfoManager
@@ -48,14 +50,12 @@ namespace PrismSampleApp1.Services
             }
             var lines = File.ReadAllLines(path);
 
-            var players = new List<Player>();
-
             foreach (var l in lines)
             {
                 var splitted = l.Split(',');
                 var cnt = splitted.Length;
                 //if (splitted.Length < 3) { continue; }
-                players.Add(new Player
+                this.Players.Add(new Player
                 {
                     PlayerName = splitted[0],
                     Gender = splitted[1],
@@ -64,7 +64,7 @@ namespace PrismSampleApp1.Services
                 });
             }
 
-            return players;
+            return this.Players;
         }
 
         public void FlushContents()

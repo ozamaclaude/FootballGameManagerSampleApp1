@@ -166,7 +166,7 @@ namespace PrismSampleApp1.ViewModels
             };
             PlayersInfo.Add(player);
 
-            _playersInfoManager.AddPlayer(player);
+            //_playersInfoManager.AddPlayer(player);
         }
 
         private bool IsValidate()

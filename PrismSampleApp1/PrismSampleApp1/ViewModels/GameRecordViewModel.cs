@@ -2,24 +2,46 @@
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using PrismSampleApp1.Commons;
+using PrismSampleApp1.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Threading;
+using Unity;
 
 namespace PrismSampleApp1.ViewModels
 {
     public class GameRecordViewModel : BindableBase
     {
-        private ObservableCollection<PlayerData> _playersGameData
-            = new ObservableCollection<PlayerData>();
+        private const string _labelRepresent = "代表";
+        private const string _labelJunior = "ジュニア";
+        private const string _labelUnder2 = "2年以下";
+        private const string _label6th = "6";
+        private const string _label5th = "5";
+        private const string _label4th = "4";
+        private const string _label3rd = "3";
+        private const string _label2nd = "2";
+        private const string _label1st = "1";
+        private const string _labelInfant = "幼児";
 
         private const string _labelGameStart = "試合開始";
         private const string _labelGameEnd = "試合終了";
         private const string _timeFormat = "HH:mm:ss";
         private const string _blank = "-";
 
+        private string _selectedGrade = "";
+        public string SelectedGrade
+        {
+            get { return _selectedGrade; }
+            set 
+            { 
+                SetProperty(ref _selectedGrade, value.Replace("System.Windows.Controls.ComboBoxItem: ", ""));
+                HandleSelectionGradeList(_selectedGrade);
+            }
+        }
+        private ObservableCollection<PlayerData> _playersGameData
+            = new ObservableCollection<PlayerData>();
         public ObservableCollection<PlayerData> PlayersGameData
         {
             get { return _playersGameData; }
@@ -58,8 +80,12 @@ namespace PrismSampleApp1.ViewModels
         public DelegateCommand GetPointCommand { get; private set; }
 
         private readonly IDialogService dlgService = null;
+        private IUnityContainer _container;
+        private IPlayersInfoManager _playersInfoManager;
 
-        public GameRecordViewModel(IDialogService dialogService)
+        private List<Player> _players = new List<Player>();
+
+        public GameRecordViewModel(IDialogService dialogService, IUnityContainer container)
         {
 
             dlgService = dialogService;
@@ -67,6 +93,9 @@ namespace PrismSampleApp1.ViewModels
             RegisterCommand = new DelegateCommand(RegisterRecord);
             SaveCommand = new DelegateCommand(SaveRecord);
             GetPointCommand = new DelegateCommand(AddPoint);
+            _container = container;
+            _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
+            _players = _playersInfoManager.ReadFile();
         }
 
         private void MeasureTime()
@@ -102,6 +131,32 @@ namespace PrismSampleApp1.ViewModels
                     ret => result = ret);
         }
 
+        private void HandleSelectionGradeList(string grade)
+        {
+            PlayersGameData.Clear();
+            
+            var pData = new List<Player>();
+            if (grade == _labelRepresent)
+            {
+                _players.ForEach(x => { if (x.Grade == _label6th || x.Grade == _label5th) { pData.Add(x); } }); 
+            }
+
+            if (grade == _labelJunior)
+            {
+                _players.ForEach(x => { if (x.Grade == _label4th || x.Grade == _label3rd) { pData.Add(x); } });
+            }
+
+            //pData.ForEach(x => PlayersGameData.Add((PlayerData)x));
+            foreach(var p in pData) 
+            {
+                var x = new PlayerData(p);
+                PlayersGameData.Add(x);
+            }
+            
+            var aaa = 1;
+            //_playersInfoManager.Players
+            //PlayersGameData
+        }
 
     }
 }
