@@ -111,8 +111,9 @@
                 <TextBlock Text="メンバー" FontSize="16" Foreground="White"
                            Height="20"/>
                 <DataGrid ItemsSource="{Binding PlayersGameData, Mode=TwoWay}"
-                      Height="200" Width="600" Margin="10 10 10 10 " 
-                      AutoGenerateColumns="False" CanUserAddRows="False">
+                          SelectedItem="{Binding CurrentRowItem}"
+                          Height="200" Width="600" Margin="10 10 10 10 " 
+                          AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="名前" Binding="{Binding PlayerName}"/>
                         <DataGridTextColumn Header="男／女" Binding="{Binding Gender}"/>
@@ -122,14 +123,19 @@
                         <DataGridTemplateColumn Header="得点追加">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="追加" Command="{Binding GetPointCommand}" IsEnabled="{Binding Actionable}"/>
+                                    <Button Content="追加" 
+                                            Command="{Binding DataContext.GetPointCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                    <!--CommandParameter="{Binding SelectedItem}"/>-->
+                                            
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="交代時刻" Binding="{Binding ChangingTime}"/>
                         <DataGridTemplateColumn Header="交代">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="交代" Command="{Binding GetPointCommand}" IsEnabled="{Binding Actionable}"/>
+                                    <Button Content="交代" 
+                                            Command="{Binding DataContext.ChangeMemberCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

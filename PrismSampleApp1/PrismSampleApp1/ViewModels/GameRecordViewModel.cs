@@ -37,6 +37,13 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _gameDate, value); }
         }
 
+        private string _changingTime= "";
+        public string ChangingTime
+        {
+            get { return _changingTime; }
+            set {SetProperty(ref _changingTime, value); }
+        }
+
         private string _selectedGrade = "";
         public string SelectedGrade
         {
@@ -47,6 +54,14 @@ namespace PrismSampleApp1.ViewModels
                 HandleSelectionGradeList(_selectedGrade);
             }
         }
+
+        private PlayerData _currentRowItem;
+        public PlayerData CurrentRowItem
+        { 
+            get { return _currentRowItem; }
+            set { SetProperty(ref _currentRowItem, value); }
+        }
+
         private ObservableCollection<PlayerData> _playersGameData
             = new ObservableCollection<PlayerData>();
         public ObservableCollection<PlayerData> PlayersGameData
@@ -84,7 +99,9 @@ namespace PrismSampleApp1.ViewModels
         public DelegateCommand MeasureTimeCommand { get; private set; }
         public DelegateCommand SaveCommand { get; private set; }
 
+        //public DelegateCommand<PlayerData> GetPointCommand { get; private set; }
         public DelegateCommand GetPointCommand { get; private set; }
+        public DelegateCommand ChangeMemberCommand { get; private set; }
 
         private readonly IDialogService dlgService = null;
         private IUnityContainer _container;
@@ -99,7 +116,9 @@ namespace PrismSampleApp1.ViewModels
             MeasureTimeCommand = new DelegateCommand(MeasureTime);
             RegisterCommand = new DelegateCommand(RegisterRecord);
             SaveCommand = new DelegateCommand(SaveRecord);
+            //GetPointCommand = new DelegateCommand<PlayerData>(AddPoint);
             GetPointCommand = new DelegateCommand(AddPoint);
+            ChangeMemberCommand = new DelegateCommand(ChangeMember);
             _container = container;
             _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
             _players = _playersInfoManager.ReadFile();
@@ -128,7 +147,23 @@ namespace PrismSampleApp1.ViewModels
 
         }
 
-        private void AddPoint() { }
+        private void ChangeMember()
+        {
+            var newRec = new PlayerData(CurrentRowItem);
+            newRec.ChangingTime = DateTime.Now.ToString("HH:mm:ss");
+            var index = PlayersGameData.IndexOf(CurrentRowItem);
+            PlayersGameData.Remove(CurrentRowItem);
+            PlayersGameData.Insert(index, newRec);
+        }
+
+        private void AddPoint()
+        {
+            var newRec = new PlayerData(CurrentRowItem);
+            newRec.Score++;
+            var index = PlayersGameData.IndexOf(CurrentRowItem);
+            PlayersGameData.Remove(CurrentRowItem);
+            PlayersGameData.Insert(index, newRec);
+        }
 
         private void ShowDialog()
         {
