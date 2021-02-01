@@ -148,7 +148,7 @@ namespace PrismSampleApp1.ViewModels
         {
             if(Opponent == "")
             {
-                ShowDialog();
+                ShowDialog("必要な項目が入力されていません\n入力内容を見直してください");
                 return;
             }
         }
@@ -176,11 +176,12 @@ namespace PrismSampleApp1.ViewModels
             PlayersGameData.Insert(index, newRec);
         }
 
-        private void ShowDialog()
+        private void ShowDialog(string msg, bool isWarn = true)
         {
             IDialogResult result = null;
+            var isWarning = isWarn.ToString();
             this.dlgService.ShowDialog("ServiceDialog",
-                    new DialogParameters { { "Message1", "aaaa" }, { "Message2", "bbbb" } },
+                    new DialogParameters { { "Message1", msg }, { "Message2", isWarning } },
                     ret => result = ret);
         }
 

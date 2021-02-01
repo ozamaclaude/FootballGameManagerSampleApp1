@@ -51,7 +51,13 @@ namespace PrismSampleApp1.ViewModels
         {
             var aaa = 1;
             MainMessage = parameters.GetValue<string>("Message1");
-            
+            var isWarn = parameters.GetValue<string>("Message2");
+            if(isWarn == "True") { 
+                Title = "通知";
+                return;
+            }
+            Title = "エラー";
+
         }
 
     }
