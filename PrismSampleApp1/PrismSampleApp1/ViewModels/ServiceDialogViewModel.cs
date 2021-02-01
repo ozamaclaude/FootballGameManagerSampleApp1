@@ -4,6 +4,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace PrismSampleApp1.ViewModels
 {
@@ -15,10 +16,13 @@ namespace PrismSampleApp1.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+
+        public DelegateCommand CloseCommand { get; private set; }
+
         public event Action<IDialogResult> RequestClose;
         public ServiceDialogViewModel()
         {
-
+            CloseCommand = new DelegateCommand(CloseDialog);
         }
 
         private string _mainMessage = "";
@@ -26,6 +30,12 @@ namespace PrismSampleApp1.ViewModels
         {
             get { return _mainMessage; }
             set { SetProperty(ref _mainMessage, value); }
+        }
+
+        private void CloseDialog()
+        {
+            IDialogResult dialogResult = new DialogResult(ButtonResult.OK);
+            this.RequestClose?.Invoke(dialogResult);
         }
 
         public bool CanCloseDialog()
