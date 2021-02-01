@@ -76,7 +76,8 @@
                 <TextBox Height="20"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
                          Text="{Binding GameDate, Mode=TwoWay}"/>
                 <TextBlock Text="対戦相手" FontSize="18"  Foreground="White" Margin="0 0 10 0"/>
-                <TextBox Height="20"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"/>
+                <TextBox Height="20"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
+                         Text="{Binding Opponent, Mode=TwoWay}"/>
                 <TextBlock Text="場所" FontSize="18"  Foreground="White" Margin="0 0 10 0"/>
                 <TextBox Height="20"  Width="120" VerticalAlignment="Top" />
             </StackPanel>

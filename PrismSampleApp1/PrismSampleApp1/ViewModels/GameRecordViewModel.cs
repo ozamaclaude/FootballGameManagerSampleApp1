@@ -30,6 +30,13 @@ namespace PrismSampleApp1.ViewModels
         private const string _timeFormat = "HH:mm:ss";
         private const string _blank = "-";
 
+        private string _opponent = "";
+        public string Opponent
+        {
+            get { return _opponent; }
+            set { SetProperty(ref _opponent, value); }
+        }
+
         private string _gameDate = DateTime.Now.ToString("yyyy年MM月dd日");
         public string GameDate
         {
@@ -139,7 +146,11 @@ namespace PrismSampleApp1.ViewModels
 
         private void RegisterRecord()
         {
-
+            if(Opponent == "")
+            {
+                ShowDialog();
+                return;
+            }
         }
 
         private void SaveRecord()
