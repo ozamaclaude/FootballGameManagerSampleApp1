@@ -32,6 +32,13 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _gameRecord, value); }
         }
 
+        private string _gameResults = "ゲーム結果";
+        public string GameResults
+        {
+            get { return _gameResults; }
+            set { SetProperty(ref _gameResults, value); }
+        }
+
         private string _playerName = "";
         public string PlayerName
         {

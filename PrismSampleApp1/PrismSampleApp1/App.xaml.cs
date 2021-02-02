@@ -23,6 +23,7 @@ namespace PrismSampleApp1
             containerRegistry.RegisterForNavigation<Views.SettingView>();
             containerRegistry.RegisterForNavigation<Views.Default>();
             containerRegistry.RegisterForNavigation<Views.GameRecord>();
+            containerRegistry.RegisterForNavigation<Views.GameResults>();
 
             containerRegistry.Register<IPlayersInfoManager, PlayersInfoManager>();
         }

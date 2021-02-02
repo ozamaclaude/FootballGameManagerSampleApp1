@@ -15,8 +15,9 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="2"/>
         </Grid.RowDefinitions>
+        
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"/>
@@ -62,13 +63,13 @@
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="5"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="180"/>
                 <RowDefinition Height="5"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
                 <RowDefinition Height="5"/>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="5"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
@@ -147,14 +148,14 @@
             
             <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
                 <TextBlock Text="所感" FontSize="16" Foreground="White" Height="20"/>
-                <TextBox Height="60" Width="600" Margin="10 10 10 10 " 
+                <TextBox Height="80" Width="600" Margin="10 10 10 10 " 
                          Text="{Binding Summary, Mode=TwoWay}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Vertical">
                 <TextBlock Text="結果" FontSize="16" Foreground="White" Height="20"/>
                 <DataGrid ItemsSource="{Binding GameResults, Mode=TwoWay}"
-                      Height="60" Width="600" Margin="10 10 10 10 " 
+                      Height="100" Width="600" Margin="10 10 10 10 " 
                       AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="学年" Binding="{Binding TeamDivision}"/>

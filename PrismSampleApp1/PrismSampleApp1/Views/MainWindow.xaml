@@ -30,9 +30,11 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <Image Source = "{StaticResource teamLogo}" Grid.Row="1" 
+            <Image Source = "{StaticResource teamLogo}" 
+                   Grid.Row="1" 
                    Height="50" Width="50" HorizontalAlignment="Left"
                    Margin="10 0 0 0"/>
             <TextBlock Grid.Row="2" Foreground="White" Text="{Binding SettingMenu}"
@@ -49,6 +51,14 @@
                 <TextBlock.InputBindings>
                     <MouseBinding Command="{Binding NavigateCommand }" 
                                   CommandParameter="GameRecord" MouseAction="LeftClick" />
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock Grid.Row="4" Foreground="White" Text="{Binding GameResults}"
+                       FontSize="15" FontWeight="Bold" Cursor="Hand"
+                       HorizontalAlignment="Left" Margin="10 0 0 0" >
+                <TextBlock.InputBindings>
+                    <MouseBinding Command="{Binding NavigateCommand }" 
+                                  CommandParameter="GameResults" MouseAction="LeftClick" />
                 </TextBlock.InputBindings>
             </TextBlock>
         </Grid>
