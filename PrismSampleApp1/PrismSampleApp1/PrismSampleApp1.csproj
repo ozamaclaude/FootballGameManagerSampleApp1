@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commons\GameData.cs" />
     <Compile Include="Commons\Player.cs" />
     <Compile Include="Commons\PlayerData.cs" />
     <Compile Include="Services\PlayersInfoManager.cs" />

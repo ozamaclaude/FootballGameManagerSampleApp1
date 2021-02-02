@@ -30,6 +30,20 @@ namespace PrismSampleApp1.ViewModels
         private const string _timeFormat = "HH:mm:ss";
         private const string _blank = "-";
 
+        private string _place = "";
+        public string Place
+        {
+            get { return _place; }
+            set { SetProperty(ref _place, value); }
+        }
+
+        private string _summary = "";
+        public string Summary
+        {
+            get { return _summary; }
+            set { SetProperty(ref _summary, value); }
+        }
+
         private string _opponent = "";
         public string Opponent
         {
@@ -67,6 +81,15 @@ namespace PrismSampleApp1.ViewModels
         { 
             get { return _currentRowItem; }
             set { SetProperty(ref _currentRowItem, value); }
+        }
+
+        private ObservableCollection<GameData> _gameResults
+            = new ObservableCollection<GameData>();
+
+        public ObservableCollection<GameData> GameResults
+        {
+            get { return _gameResults; }
+            set { SetProperty(ref _gameResults, value); }
         }
 
         private ObservableCollection<PlayerData> _playersGameData
@@ -151,6 +174,18 @@ namespace PrismSampleApp1.ViewModels
                 ShowDialog("必要な項目が入力されていません\n入力内容を見直してください");
                 return;
             }
+            var result = new GameData { 
+                TeamDivision = SelectedGrade,
+                GameDate = GameDate,
+                Place = Place,
+                OpponentTeam = Opponent,
+                StartTime = StartTime,
+                EndTime = EndTime,
+                Summary = Summary,
+                GameDetails = "",
+                Half = ""
+            };
+            GameResults.Add(result);
         }
 
         private void SaveRecord()
