@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using Unity;
 using System.Linq;
 using System.Collections.Generic;
+using PrismSampleApp1.Utils;
 
 namespace PrismSampleApp1.ViewModels
 {
@@ -20,21 +21,21 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private string _settingMenu = "選手登録";
+        private string _settingMenu = Labels.LabelSettingMenu;
         public string SettingMenu
         {
             get { return _settingMenu; }
             set { SetProperty(ref _settingMenu, value); }
         }
 
-        private string _gameRecord = "ゲームの記録";
+        private string _gameRecord = Labels.LabelGameRecord;
         public string GameRecord
         {
             get { return _gameRecord; }
             set { SetProperty(ref _gameRecord, value); }
         }
 
-        private string _gameResults = "ゲーム結果";
+        private string _gameResults = Labels.LabelGameResult;
         public string GameResults
         {
             get { return _gameResults; }
@@ -59,7 +60,7 @@ namespace PrismSampleApp1.ViewModels
         public string PlayerGrade
         {
             get { return _playerGrade; }
-            set { SetProperty(ref _playerGrade, value.Replace("System.Windows.Controls.ComboBoxItem: ", "")); }
+            set { SetProperty(ref _playerGrade, value.Replace(Labels.TagReplaceCombo, "")); }
         }
 
         private string _playerPosition = "";
@@ -68,7 +69,7 @@ namespace PrismSampleApp1.ViewModels
             get { return _playerPosition; }
             set 
             {
-                SetProperty(ref _playerPosition, value.Replace("System.Windows.Controls.ComboBoxItem: ", "")); 
+                SetProperty(ref _playerPosition, value.Replace(Labels.TagReplaceCombo, "")); 
             }
         }
 
@@ -114,6 +115,11 @@ namespace PrismSampleApp1.ViewModels
         private void Setup()
         {
             var players = _playersInfoManager.ReadFile();
+            if(players == null)
+            {
+                ShowDialog(Labels.WD_FileNotFound, false);
+                return;
+            }
             players.ForEach(x => {
                 AddPlayer(x.PlayerName, x.Gender, x.Grade, x.Position);
             });
@@ -121,7 +127,7 @@ namespace PrismSampleApp1.ViewModels
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Views.Default));
             NavigateCommand = new DelegateCommand<string>(Navigate);
             RegisterCommand = new DelegateCommand(RegisterMember);
-            SaveCommand = new DelegateCommand(Save);
+            SaveCommand = new DelegateCommand(SavePlayers);
         }
 
         private void Navigate(string path)
@@ -135,12 +141,12 @@ namespace PrismSampleApp1.ViewModels
         {
             if (!IsValidate()) 
             { 
-                ShowDialog();
+                ShowDialog(Labels.WD_InsufficientRequiredParameters);
                 return;
             }
 
-            var gender = "女子";
-            if (this.Gender) { gender = "男子"; };
+            var gender = Labels.LabelWomen;
+            if (this.Gender) { gender = Labels.LabelMen; };
             AddPlayer(this.PlayerName, gender, this.PlayerGrade, this.PlayerPosition);
 
             InitializePlayer();
@@ -184,18 +190,19 @@ namespace PrismSampleApp1.ViewModels
             return true;
         }
 
-        private void Save()
+        private void SavePlayers()
         {
             var saveData = new List<Player>();
             PlayersInfo.ToList().ForEach(x => saveData.Add(x));
             _playersInfoManager.FlushContents();
-            _playersInfoManager.Save(saveData);
+            _playersInfoManager.SavePlayers(saveData);
         }
-        private void ShowDialog()
+        private void ShowDialog(string msg, bool isWarn = true)
         {
             IDialogResult result = null;
+            var isWarning = isWarn.ToString();
             this.dlgService.ShowDialog("ServiceDialog",
-                    new DialogParameters { { "Message1", "aaaa" }, { "Message2", "bbbb" } },
+                    new DialogParameters { { "Message1", msg }, { "Message2", isWarning } },
                     ret => result = ret);
         }
     }

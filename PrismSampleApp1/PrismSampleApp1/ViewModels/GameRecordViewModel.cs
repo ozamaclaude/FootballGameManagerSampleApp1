@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using PrismSampleApp1.Commons;
 using PrismSampleApp1.Services;
+using PrismSampleApp1.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,8 +27,6 @@ namespace PrismSampleApp1.ViewModels
         private const string _label1st = "1";
         private const string _labelInfant = "幼児";
 
-        private const string _labelGameStart = "試合開始";
-        private const string _labelGameEnd = "試合終了";
         private const string _timeFormat = "HH:mm:ss";
         private const string _blank = "-";
 
@@ -72,7 +71,7 @@ namespace PrismSampleApp1.ViewModels
             get { return _selectedGrade; }
             set 
             { 
-                SetProperty(ref _selectedGrade, value.Replace("System.Windows.Controls.ComboBoxItem: ", ""));
+                SetProperty(ref _selectedGrade, value.Replace(Labels.TagReplaceCombo, ""));
                 HandleSelectionGradeList(_selectedGrade);
             }
         }
@@ -100,7 +99,7 @@ namespace PrismSampleApp1.ViewModels
             get { return _playersGameData; }
             set { SetProperty(ref _playersGameData, value); }
         }
-        private string _gameStatus = _labelGameStart;
+        private string _gameStatus = Labels.LabelGameStart;
         public string GameStatus
         {
             get { return _gameStatus; }
@@ -157,14 +156,14 @@ namespace PrismSampleApp1.ViewModels
 
         private void MeasureTime()
         {
-            if(GameStatus == _labelGameStart) 
+            if(GameStatus == Labels.LabelGameStart) 
             {
-                GameStatus = _labelGameEnd;
+                GameStatus = Labels.LabelGameEnd;
                 StartTime = DateTime.Now.ToString(_timeFormat);
                 EndTime = _blank;
                 return;
             }
-            GameStatus = _labelGameStart;
+            GameStatus = Labels.LabelGameStart;
             EndTime = DateTime.Now.ToString(_timeFormat);
         }
 
@@ -172,7 +171,7 @@ namespace PrismSampleApp1.ViewModels
         {
             if(Opponent == "")
             {
-                ShowDialog("必要な項目が入力されていません\n入力内容を見直してください");
+                ShowDialog(Labels.WD_InsufficientRequiredParameters);
                 return;
             }
             var result = new GameData { 

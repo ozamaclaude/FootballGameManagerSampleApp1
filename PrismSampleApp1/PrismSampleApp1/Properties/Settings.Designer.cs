@@ -34,5 +34,17 @@ namespace PrismSampleApp1.Properties {
                 this["PlayerFilePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\dev\\temp\\Result.csv")]
+        public string GameResultFilePath {
+            get {
+                return ((string)(this["GameResultFilePath"]));
+            }
+            set {
+                this["GameResultFilePath"] = value;
+            }
+        }
     }
 }

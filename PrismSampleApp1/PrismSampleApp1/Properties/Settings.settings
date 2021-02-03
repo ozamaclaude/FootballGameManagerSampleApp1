@@ -5,5 +5,8 @@
     <Setting Name="PlayerFilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\M.Ozama\forJob\dev\temp\player.csv</Value>
     </Setting>
+    <Setting Name="GameResultFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\M.Ozama\forJob\dev\temp\Result.csv</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

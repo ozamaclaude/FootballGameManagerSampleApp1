@@ -27,11 +27,11 @@
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" Text="学年指定" 
-                       Height="35" FontSize="18"
+                       Height="18" FontSize="14"
                        Foreground="White"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
             
-            <ComboBox Grid.Column="3" Margin="50 5 30 5"
+            <ComboBox Grid.Column="3" Margin="50 5 30 5" Height="16"
                       SelectedItem="{Binding SelectedGrade, Mode=TwoWay}">
                 <ComboBoxItem></ComboBoxItem>
                 <ComboBoxItem>代表</ComboBoxItem>
@@ -73,46 +73,57 @@
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                <TextBlock Text="試合日" FontSize="18" Foreground="White" Margin="0 0 10 0"/>
-                <TextBox Height="20"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
+                <TextBlock Text="試合日" FontSize="16" Foreground="White" Margin="0 0 10 0"/>
+                <TextBox Height="16"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
                          Text="{Binding GameDate, Mode=TwoWay}"/>
-                <TextBlock Text="対戦相手" FontSize="18"  Foreground="White" Margin="0 0 10 0"/>
-                <TextBox Height="20"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
+                <TextBlock Text="対戦相手" FontSize="16"  Foreground="White" Margin="0 0 10 0"/>
+                <TextBox Height="16"  Width="120" VerticalAlignment="Top" Margin="0 0 10 0"
                          Text="{Binding Opponent, Mode=TwoWay}"/>
-                <TextBlock Text="場所" FontSize="18"  Foreground="White" Margin="0 0 10 0"/>
-                <TextBox Height="20"  Width="120" VerticalAlignment="Top" 
+                <TextBlock Text="場所" FontSize="16"  Foreground="White" Margin="0 0 10 0"/>
+                <TextBox Height="16"  Width="120" VerticalAlignment="Top" 
                          Text="{Binding Place, Mode=TwoWay}"/>
             </StackPanel>
             
             <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <TextBlock Height="30" Width="200"  Name ="CurrentTime"
-                           FontSize="20" Background="OliveDrab"
-                           Foreground="White" Margin="0 0 10 0"/>
-                <Button Height="35" Width="80" Foreground="White" 
-                        FontSize="16" Background="Green"
+                <TextBlock Height="20" Width="150"  Name ="CurrentTime"
+                           FontSize="14" Background="OliveDrab"
+                           TextAlignment="Center"
+                           Foreground="White" Margin="0 0 5 0"/>
+                <Button Height="30" Width="70" Foreground="White" 
+                        FontSize="12" Background="Green"
                         Content="{Binding GameStatus}"
                         Command="{Binding MeasureTimeCommand}"
                         Margin="0 0 10 0"/>
-                <TextBlock Height="35" Width="80"  Text="開始時刻"
-                           FontSize="15" 
-                           Foreground="White" Margin="0 0 10 0"/>
-                <TextBlock Height="35" Width="80"
+                <TextBlock Height="16" Width="40" Text="久が原"
+                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="20" Text="0"
+                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="20" Text="-"
+                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="20" Text="0"
+                           FontSize="14" Foreground="White" Margin="0 0 10 0"/>
+                <TextBlock Height="16" Width="60" Text="{Binding Opponent}"
+                           FontSize="14" Foreground="White" Margin="0 0 10 0"/>
+                <TextBlock Height="16" Width="60"  Text="開始時刻"
+                           FontSize="14" 
+                           Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="60"
                            Text="{Binding StartTime}"
-                           FontSize="15" 
-                           Foreground="White" Margin="0 0 10 0"/>
-                <TextBlock Height="35" Width="80"  Text="終了時刻"
-                           FontSize="15"
-                           Foreground="White" Margin="0 0 10 0"/>
-                <TextBlock Height="35" Width="80"  
+                           FontSize="14" 
+                           Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="60"  Text="終了時刻"
+                           FontSize="14"
+                           Foreground="White" Margin="0 0 5 0"/>
+                <TextBlock Height="16" Width="60"  
                            Text="{Binding EndTime}"
-                           FontSize="15" 
+                           FontSize="14" 
                            Foreground="White" Margin="0 0 10 0"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
-                <TextBlock Text="メンバー" FontSize="16" Foreground="White"
-                           Height="20"/>
+                <TextBlock Text="メンバー" FontSize="14" Foreground="White"
+                           Height="16" HorizontalAlignment="Center"/>
                 <DataGrid ItemsSource="{Binding PlayersGameData, Mode=TwoWay}"
                           SelectedItem="{Binding CurrentRowItem}"
                           Height="200" Width="600" Margin="10 10 10 10 " 
@@ -147,13 +158,16 @@
             </StackPanel>
             
             <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
-                <TextBlock Text="所感" FontSize="16" Foreground="White" Height="20"/>
+                <TextBlock Text="所感" FontSize="14" 
+                           Foreground="White" Height="16"
+                           HorizontalAlignment="Center"/>
                 <TextBox Height="80" Width="600" Margin="10 10 10 10 " 
                          Text="{Binding Summary, Mode=TwoWay}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="9" Orientation="Vertical">
-                <TextBlock Text="結果" FontSize="16" Foreground="White" Height="20"/>
+                <TextBlock Text="結果" FontSize="14" Foreground="White" 
+                           Height="16" HorizontalAlignment="Center"/>
                 <DataGrid ItemsSource="{Binding GameResults, Mode=TwoWay}"
                       Height="100" Width="600" Margin="10 10 10 10 " 
                       AutoGenerateColumns="False" CanUserAddRows="False">
