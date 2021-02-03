@@ -16,7 +16,8 @@ namespace PrismSampleApp1.ViewModels
     {
         private const string _labelRepresent = "代表";
         private const string _labelJunior = "ジュニア";
-        private const string _labelUnder2 = "2年以下";
+        private const string _labelUnder2nd = "2年以下";
+        private const string _labelUnder3rd = "3年以下";
         private const string _label6th = "6";
         private const string _label5th = "5";
         private const string _label4th = "4";
@@ -225,18 +226,29 @@ namespace PrismSampleApp1.ViewModels
             PlayersGameData.Clear();
             
             var pData = new List<Player>();
-            if (grade == _labelRepresent)
-            {
-                _players.ForEach(x => { if (x.Grade == _label6th || x.Grade == _label5th) { pData.Add(x); } }); 
-            }
+            if (grade == _labelRepresent) { _players.ForEach(x => { 
+                if (x.Grade == _label6th || x.Grade == _label5th) { pData.Add(x); } }); }
 
-            if (grade == _labelJunior)
+            else if (grade == _labelJunior) { _players.ForEach(x => { 
+                 if (x.Grade == _label4th || x.Grade == _label3rd) { pData.Add(x); } }); }
+
+            else if(grade == _labelUnder2nd){ _players.ForEach(x => { 
+                 if (x.Grade == _label2nd || x.Grade == _label1st || x.Grade == _labelInfant) { pData.Add(x); } }); }
+            else if (grade == _labelUnder3rd)
             {
-                _players.ForEach(x => { if (x.Grade == _label4th || x.Grade == _label3rd) { pData.Add(x); } });
+                _players.ForEach(x => {
+                    if (x.Grade == _label3rd || x.Grade == _label2nd || x.Grade == _label1st || x.Grade == _labelInfant) { pData.Add(x); }
+                });
+            }
+            else
+            {
+                _players.ForEach(x => {
+                    if (x.Grade == grade) { pData.Add(x); }
+                });
             }
 
             //pData.ForEach(x => PlayersGameData.Add((PlayerData)x));
-            foreach(var p in pData) 
+            foreach (var p in pData) 
             {
                 var x = new PlayerData(p);
                 PlayersGameData.Add(x);
