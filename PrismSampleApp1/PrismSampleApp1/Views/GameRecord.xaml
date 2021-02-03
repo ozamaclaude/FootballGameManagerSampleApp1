@@ -86,25 +86,41 @@
             
             <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <TextBlock Height="20" Width="150"  Name ="CurrentTime"
-                           FontSize="14" Background="OliveDrab"
-                           TextAlignment="Center"
-                           Foreground="White" Margin="0 0 5 0"/>
+                <StackPanel Background="OliveDrab" Height="30" Margin="0 0 10 0">
+                    <TextBlock Height="20" Width="170"  
+                               Name ="CurrentTime"
+                               TextAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontSize="18" Background="OliveDrab"
+                               Foreground="White" />
+                </StackPanel>
                 <Button Height="30" Width="70" Foreground="White" 
                         FontSize="12" Background="Green"
                         Content="{Binding GameStatus}"
                         Command="{Binding MeasureTimeCommand}"
                         Margin="0 0 10 0"/>
-                <TextBlock Height="16" Width="40" Text="久が原"
-                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
-                <TextBlock Height="16" Width="20" Text="0"
-                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
-                <TextBlock Height="16" Width="20" Text="-"
-                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>
-                <TextBlock Height="16" Width="20" Text="0"
-                           FontSize="14" Foreground="White" Margin="0 0 10 0"/>
-                <TextBlock Height="16" Width="60" Text="{Binding Opponent}"
-                           FontSize="14" Foreground="White" Margin="0 0 10 0"/>
+                <!--<TextBlock Height="16" Width="40" Text="久が原"
+                           FontSize="14" Foreground="White" Margin="0 0 5 0"/>-->
+                <TextBlock Height="30" Width="20" 
+                           Text="{Binding Total}"
+                           TextAlignment="Center"
+                           Background="Blue"
+                           FontSize="18" Foreground="White" Margin="0 0 0 0"/>
+                <TextBlock Height="30" Width="20" Text="-"
+                           TextAlignment="Center"
+                           Background="Blue"
+                           FontSize="14" Foreground="White" Margin="0 0 0 0"/>
+                <TextBlock Height="30" Width="20" Text="{Binding OpponentTotal}"
+                           TextAlignment="Center"
+                           Background="Blue"
+                           FontSize="18" Foreground="White" Margin="0 0 10 0"/>
+                <!--<TextBlock Height="16" Width="60" Text="{Binding Opponent}"
+                           FontSize="14" Foreground="White" Margin="0 0 10 0"/>-->
+                <Button Height="30" Width="70" Foreground="White" 
+                        FontSize="12" Background="HotPink"
+                        Content="相手の得点"
+                        Command="{Binding OpponentAddScoreCommand}"
+                        Margin="0 0 10 0"/>
                 <TextBlock Height="16" Width="60"  Text="開始時刻"
                            FontSize="14" 
                            Foreground="White" Margin="0 0 5 0"/>
@@ -137,7 +153,10 @@
                         <DataGridTemplateColumn Header="得点追加">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="追加" 
+                                    <Button Background="HotPink"
+                                            Foreground="White"
+                                            Width="50"
+                                            Content="追加" 
                                             Command="{Binding DataContext.GetPointCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
                                     <!--CommandParameter="{Binding SelectedItem}"/>-->
                                             
@@ -176,6 +195,7 @@
                         <DataGridTextColumn Header="日時" Binding="{Binding GameDate}"/>
                         <DataGridTextColumn Header="場所" Binding="{Binding Place}"/>
                         <DataGridTextColumn Header="対戦相手" Binding="{Binding OpponentTeam}"/>
+                        <DataGridTextColumn Header="結果" Binding="{Binding Result}"/>
                         <DataGridTextColumn Header="開始時間" Binding="{Binding StartTime}"/>
                         <DataGridTextColumn Header="終了時間" Binding="{Binding EndTime}"/>
                         <DataGridTextColumn Header="所感" Binding="{Binding Summary}"/>

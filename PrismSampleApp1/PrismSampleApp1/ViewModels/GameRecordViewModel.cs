@@ -44,6 +44,20 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _summary, value); }
         }
 
+        private string _total = "0";
+        public string Total
+        {
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
+        }
+
+        private string _opponentTotal = "0";
+        public string OpponentTotal
+        {
+            get { return _opponentTotal; }
+            set { SetProperty(ref _opponentTotal, value); }
+        }
+
         private string _opponent = "";
         public string Opponent
         {
@@ -126,6 +140,7 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _endTime, value); }
         }
         public DelegateCommand RegisterCommand { get; private set; }
+        public DelegateCommand OpponentAddScoreCommand { get; private set; }
         public DelegateCommand MeasureTimeCommand { get; private set; }
         public DelegateCommand SaveCommand { get; private set; }
 
@@ -148,10 +163,18 @@ namespace PrismSampleApp1.ViewModels
             SaveCommand = new DelegateCommand(SaveRecord);
             //GetPointCommand = new DelegateCommand<PlayerData>(AddPoint);
             GetPointCommand = new DelegateCommand(AddPoint);
+            OpponentAddScoreCommand = new DelegateCommand(AddOpponentScore);
             ChangeMemberCommand = new DelegateCommand(ChangeMember);
             _container = container;
             _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
             _players = _playersInfoManager.ReadFile();
+        }
+
+        private void AddOpponentScore()
+        {
+            var tempScore = int.Parse(OpponentTotal);
+            tempScore++;
+            OpponentTotal = tempScore.ToString();
         }
 
         private void MeasureTime()
@@ -179,6 +202,7 @@ namespace PrismSampleApp1.ViewModels
                 GameDate = GameDate,
                 Place = Place,
                 OpponentTeam = Opponent,
+                Result = "",
                 StartTime = StartTime,
                 EndTime = EndTime,
                 Summary = Summary,
@@ -209,6 +233,9 @@ namespace PrismSampleApp1.ViewModels
             var index = PlayersGameData.IndexOf(CurrentRowItem);
             PlayersGameData.Remove(CurrentRowItem);
             PlayersGameData.Insert(index, newRec);
+            var tempScore = int.Parse(Total);
+            tempScore++;
+            Total = tempScore.ToString();
         }
 
         private void ShowDialog(string msg, bool isWarn = true)

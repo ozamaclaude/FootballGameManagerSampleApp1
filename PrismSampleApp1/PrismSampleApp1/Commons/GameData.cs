@@ -12,6 +12,7 @@ namespace PrismSampleApp1.Commons
         public string GameDate { get; set; }
         public string Place { get; set; }
         public string OpponentTeam { get; set; }
+        public string Result { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string Summary { get; set; }

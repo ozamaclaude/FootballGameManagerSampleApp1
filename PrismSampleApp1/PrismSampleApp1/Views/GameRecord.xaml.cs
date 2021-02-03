@@ -23,6 +23,7 @@ namespace PrismSampleApp1.Views
             DateTime dt = DateTime.Now;
             //return dt.ToString("yyyy/MM/dd HH:mm:ss");
             CurrentTime.Text = dt.ToString("yyyy/MM/dd HH:mm:ss");
+            //CurrentTime.Text = dt.ToString("MM/dd HH:mm:ss");
         }
     }
 }
