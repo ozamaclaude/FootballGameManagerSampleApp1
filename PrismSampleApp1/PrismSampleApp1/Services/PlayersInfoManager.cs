@@ -12,7 +12,7 @@ namespace PrismSampleApp1.Services
     interface IPlayersInfoManager
     {
         void AddPlayer(Player p);
-        void Save();
+        void Save(List<Player> players);
         void FlushContents();
 
         List<Player> ReadFile();
@@ -31,12 +31,12 @@ namespace PrismSampleApp1.Services
             Players = new List<Player>();
         }
 
-        public void Save()
+        public void Save(List<Player> players)
         {
             var path = Properties.Settings.Default.PlayerFilePath;
             using (var fileStream = new StreamWriter(path, true))
             {
-                Players.ForEach(x => Write(fileStream, x));
+                players.ForEach(x => Write(fileStream, x));
             }
         }
 

@@ -6,6 +6,8 @@ using PrismSampleApp1.Commons;
 using PrismSampleApp1.Services;
 using System.Collections.ObjectModel;
 using Unity;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace PrismSampleApp1.ViewModels
 {
@@ -184,8 +186,10 @@ namespace PrismSampleApp1.ViewModels
 
         private void Save()
         {
+            var saveData = new List<Player>();
+            PlayersInfo.ToList().ForEach(x => saveData.Add(x));
             _playersInfoManager.FlushContents();
-            _playersInfoManager.Save();
+            _playersInfoManager.Save(saveData);
         }
         private void ShowDialog()
         {
