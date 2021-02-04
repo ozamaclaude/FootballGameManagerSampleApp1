@@ -25,6 +25,7 @@ namespace PrismSampleApp1.Commons
             IsStartingMember = p.IsStartingMember;
             ChangingTime = p.ChangingTime;
         }
+        public string GameId { get; set; }
         public int Score { get; set; }
         public bool IsStartingMember { get; set; }
 

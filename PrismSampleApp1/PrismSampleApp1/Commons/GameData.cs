@@ -8,6 +8,7 @@ namespace PrismSampleApp1.Commons
 {
     public class GameData
     {
+        public string GameId { get; set; }
         public string TeamDivision { get; set; }
         public string GameDate { get; set; }
         public string Place { get; set; }

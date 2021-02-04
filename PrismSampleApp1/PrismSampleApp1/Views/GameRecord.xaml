@@ -195,11 +195,24 @@
                         <DataGridTextColumn Header="日時" Binding="{Binding GameDate}"/>
                         <DataGridTextColumn Header="場所" Binding="{Binding Place}"/>
                         <DataGridTextColumn Header="対戦相手" Binding="{Binding OpponentTeam}"/>
+                        <DataGridTextColumn Header="前後半" Binding="{Binding Half}"/>
                         <DataGridTextColumn Header="結果" Binding="{Binding Result}"/>
+                        <DataGridTemplateColumn Header="詳細">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Background="Blue"
+                                            Foreground="White"
+                                            Width="50"
+                                            Content="詳細" 
+                                            Command="{Binding DataContext.GetPlayersDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                    <!--CommandParameter="{Binding SelectedItem}"/>-->
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="所感" Binding="{Binding Summary}"/>
                         <DataGridTextColumn Header="開始時間" Binding="{Binding StartTime}"/>
                         <DataGridTextColumn Header="終了時間" Binding="{Binding EndTime}"/>
-                        <DataGridTextColumn Header="所感" Binding="{Binding Summary}"/>
-                        <DataGridTextColumn Header="前後半" Binding="{Binding Half}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

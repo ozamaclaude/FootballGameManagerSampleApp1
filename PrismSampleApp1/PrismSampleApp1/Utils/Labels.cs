@@ -20,5 +20,9 @@ namespace PrismSampleApp1.Utils
         public const string LabelGameResult = "ゲーム結果";
 
         public const string TagReplaceCombo = "System.Windows.Controls.ComboBoxItem: ";
+
+        public const string FmtDateTimeFormat1 = "HH:mm:ss";
+        public const string FmtDateTimeFormat2 = "yyyy年MM月dd日";
+        public const string FmtDateTimeFormat3 = "yyyyMMddHHmmss";
     }
 }

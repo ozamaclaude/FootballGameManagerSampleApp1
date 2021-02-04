@@ -27,7 +27,7 @@ namespace PrismSampleApp1.ViewModels
         private const string _label1st = "1";
         private const string _labelInfant = "幼児";
 
-        private const string _timeFormat = "HH:mm:ss";
+        private const string _timeFormat = Labels.FmtDateTimeFormat1;
         private const string _blank = "-";
 
         private string _place = "";
@@ -65,7 +65,7 @@ namespace PrismSampleApp1.ViewModels
             set { SetProperty(ref _opponent, value); }
         }
 
-        private string _gameDate = DateTime.Now.ToString("yyyy年MM月dd日");
+        private string _gameDate = DateTime.Now.ToString(Labels.FmtDateTimeFormat2);
         public string GameDate
         {
             get { return _gameDate; }
@@ -87,6 +87,16 @@ namespace PrismSampleApp1.ViewModels
             { 
                 SetProperty(ref _selectedGrade, value.Replace(Labels.TagReplaceCombo, ""));
                 HandleSelectionGradeList(_selectedGrade);
+            }
+        }
+
+        private string _gameId = "";
+        public string GameId
+        {
+            get { return _gameId; }
+            set 
+            {
+                SetProperty(ref _gameId, value);
             }
         }
 
@@ -146,6 +156,7 @@ namespace PrismSampleApp1.ViewModels
 
         //public DelegateCommand<PlayerData> GetPointCommand { get; private set; }
         public DelegateCommand GetPointCommand { get; private set; }
+        public DelegateCommand GetPlayersDetailsCommand { get; private set; }
         public DelegateCommand ChangeMemberCommand { get; private set; }
 
         private readonly IDialogService dlgService = null;
@@ -165,9 +176,15 @@ namespace PrismSampleApp1.ViewModels
             GetPointCommand = new DelegateCommand(AddPoint);
             OpponentAddScoreCommand = new DelegateCommand(AddOpponentScore);
             ChangeMemberCommand = new DelegateCommand(ChangeMember);
+            GetPlayersDetailsCommand = new DelegateCommand(DisplayPlayersDetails);
             _container = container;
             _playersInfoManager = _container.Resolve<IPlayersInfoManager>();
             _players = _playersInfoManager.ReadFile();
+        }
+
+        private void DisplayPlayersDetails()
+        {
+            var aaa = "";
         }
 
         private void AddOpponentScore()
@@ -183,6 +200,7 @@ namespace PrismSampleApp1.ViewModels
             {
                 GameStatus = Labels.LabelGameEnd;
                 StartTime = DateTime.Now.ToString(_timeFormat);
+                GameId = DateTime.Now.ToString(Labels.FmtDateTimeFormat3);
                 EndTime = _blank;
                 return;
             }
@@ -197,7 +215,11 @@ namespace PrismSampleApp1.ViewModels
                 ShowDialog(Labels.WD_InsufficientRequiredParameters);
                 return;
             }
+            var gamePlayers = PlayersGameData.ToList();
+            gamePlayers.ForEach(x => x.GameId = GameId);
+
             var result = new GameData { 
+                GameId = GameId,
                 TeamDivision = SelectedGrade,
                 GameDate = GameDate,
                 Place = Place,
