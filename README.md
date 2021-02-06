@@ -7,7 +7,7 @@
 
 ## メンバーの設定画面
 ![メンバー設定登録]
-(https://github.com/ozamaclaude/FootballGameManagerSampleApp1/OperationImage/SettingMenu.png)
+(https://github.com/ozamaclaude/FootballGameManagerSampleApp1/blob/master/PrismSampleApp1/OperationImage/SettingMenu.png)
 
 
 
